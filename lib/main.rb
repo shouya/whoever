@@ -20,6 +20,10 @@ class Whoever::Main
     $config = YAML.load_file(pathname)
   end
 
+  def set_hooks
+    @hook_manager.set_hooks
+  end
+
   def serve
     hook_manager = @hook_manager
     Whoever::Server.send(:define_method, :hook_manager) { hook_manager }

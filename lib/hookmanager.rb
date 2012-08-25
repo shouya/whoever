@@ -11,16 +11,25 @@ class Whoever::HookManager
   end
 
   def register_hook(method, request, hook)
-    @hook_list[method] << { request => hook }
+    @hook_list[method] = {} unless @hook_list.has_key? method
+    @hook_list[method][request] = hook
   end
 
   def find_hook(method, req_path)
     return nil unless @hook_list.has_key? method
     found = @hook_list[method].each do |k,v|
+      puts "#{k.inspect} => #{v.inspect}(#{req_path.inspect})"
       return v if req_path =~ k
     end
     return nil
   end
 
 
+  def set_hooks
+    Dir.glob(File.dirname(__FILE__) + '/hooks/*_hook.rb') do |file|
+      require_relative file
+    end
+
+    register_hook(:GET, %r{/users/show.json.*}, ::UserShowHook)
+  end
 end

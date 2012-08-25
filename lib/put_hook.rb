@@ -4,7 +4,7 @@
 
 class PutHook
   # Filter Request Object
-  def pre_put(request_object, env)
+  def self.pre_put(request_object, env)
   end
 
   # Filter Response Object

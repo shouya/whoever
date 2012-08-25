@@ -32,11 +32,11 @@ class Whoever::Server < Sinatra::Base
 
 
           hook = hook_manager.find_hook(:#{method.upcase}, req.fullpath)
-          hook.pre_get(req) if hook
+          hook.pre_#{method.to_s.downcase}(req, session) if hook
 
           res = Whoever::ResponseWrapper.new(*req.do_request)
 
-          hook.post_get(res) if hook
+          hook.post_#{method.to_s.downcase}(res, session) if hook
 
           res.headers['content-type'] = 'application/json;charset=utf-8'
           [res.status_code, res.headers, res.body]
