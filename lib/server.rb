@@ -11,18 +11,12 @@ require_relative 'response'
 
 class Whoever::Server < Sinatra::Base
   enable :sessions
+  enable :logging
 
   get '/' do
     erb :index
   end
 
-  helpers do
-    def present(response)
-      status response.status_code
-      headers response.headers
-      body response.body
-    end
-  end
 
   [:get, :post, :delete, :put].each do |method|
     eval <<-HERE
@@ -30,19 +24,22 @@ class Whoever::Server < Sinatra::Base
           req_headers = request.env.inject({}) do |acc, (k,v)|
             acc[$1.downcase] = v if k =~ /^http_(.*)/i; acc
           end
-          req = Whoever::RequestWrapper.new(request.method,
+
+          req = Whoever::RequestWrapper.new(request.request_method.intern,
                                             request.fullpath,
                                             req_headers,
                                             request.body.read)
 
-          hook = hook_manager.find_hook(#{method.upcase}, req.fullpath)
+
+          hook = hook_manager.find_hook(:#{method.upcase}, req.fullpath)
           hook.pre_get(req) if hook
 
           res = Whoever::ResponseWrapper.new(*req.do_request)
 
           hook.post_get(res) if hook
 
-          present(res)
+          res.headers['content-type'] = 'application/json;charset=utf-8'
+          [res.status_code, res.headers, res.body]
         end
     HERE
   end

@@ -13,21 +13,21 @@ class Whoever::RequestWrapper
   end
 
   def do_request
-    request_uri = $config["api_proxy_base"].sub(%r{\/$}, '')
+    request_uri = $config['api_proxy_base'].sub(%r{\/$}, '')
     request_uri << fullpath
 
     response = case method
                when :GET
-                 RestClient.get request_uri, headers
+                 RestClient.get request_uri#, headers
                when :POST
-                 RestClient.post request_uri, body, headers
+                 RestClient.post request_uri, body#, headers
                when :PUT
-                 RestClient.put request_uri, body, headers
+                 RestClient.put request_uri, body#, headers
                when :DELETE
-                 RestClient.put request_uri, headers
+                 RestClient.delete request_uri#, headers
                end
 
-    [response.headers, response.body, response.code]
+    [response.code, response.headers, response.body]
   end
 
 end
