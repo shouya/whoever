@@ -18,7 +18,6 @@ class Whoever::HookManager
   def find_hook(method, req_path)
     return nil unless @hook_list.has_key? method
     found = @hook_list[method].each do |k,v|
-      puts "#{k.inspect} => #{v.inspect}(#{req_path.inspect})"
       return v if req_path =~ k
     end
     return nil
@@ -30,6 +29,6 @@ class Whoever::HookManager
       require_relative file
     end
 
-    register_hook(:GET, %r{/users/show.json.*}, ::UserShowHook)
+    register_hook(:GET, %r{/users/show\.json.*}, ::UserShowHook)
   end
 end

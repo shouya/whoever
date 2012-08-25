@@ -1,5 +1,86 @@
 
-
-
 api_base: "http://your.twip.api/base/"
+
+nick_names:
+  - Abby
+  - Addie
+  - Aggie
+  - Bea
+  - Billie
+  - Bree
+  - Cassie
+  - Cleo
+  - Coco
+  - Daisy
+  - Dixie
+  - Dot
+  - Drea
+  - Dree
+  - Dru
+  - Edie
+  - Ellie
+  - Emme
+  - Evie
+  - Fifi
+  - Florrie
+  - Frankie
+  - Franny
+  - Fritzie
+  - Gigi
+  - Gracie
+  - Izzy
+  - Jaz
+  - Johnnie
+  - Josie
+  - Jules
+  - Kat
+  - Kate
+  - Katie
+  - Kiki
+  - Kitty
+  - Lettie
+  - Libby
+  - Lil
+  - Liv
+  - Livia
+  - Lottie
+  - Lou
+  - Lulu
+  - Maisie
+  - Mamie
+  - Millie
+  - Minnie
+  - Mitzi
+  - Mo
+  - Nell
+  - Nellie
+  - Nessa
+  - Penny
+  - Pippa
+  - Polly
+  - Poppy
+  - Pru
+  - Rosie
+  - Sadie
+  - Sam
+  - Sasha
+  - Sukey
+  - Tay
+  - Tess
+  - Tessie
+  - Tillie
+  - Vinnie
+  - Vivi
+
+clients:
+  - A Clockwork Orange
+  - Two Clockwork Oranges
+  - Three Clockwork Oranges
+  - No Clockwork Orange
+
+biographies:
+  - "I am cured, all right."
+  - "You cannot rely on me, sir."
+  - "I'm in the shadow at the left of you."
+
 
