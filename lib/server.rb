@@ -34,7 +34,7 @@ class Whoever::Server < Sinatra::Base
                                             request.fullpath,
                                             req_headers,
                                             request.body.read)
-
+          req.headers['connection'] = 'close'
 
           hook = hook_manager.find_hook(:#{method.upcase}, req.fullpath)
           hook.pre_req(req, fake_session) if hook

@@ -18,12 +18,14 @@ class Hider
 
   def query_real_value(table, fake_value)
     @table[table] = {:r2f => {}, :f2r => {}} unless @table.key? table
-    if table == :screen_name
-      puts "QUERYING FROM DB: #{@table[:screen_name].inspect}"
-    end
+
+    puts "<-DB: #{@table[:screen_name]}"
     if @table[table][:f2r].key? fake_value
-      return @table[table][:f2r][fake_value]
+      return @table[table][:f2r][fake_value].tap {|x| 
+              puts "#{fake_value.inspect} => #{x.inspect}"
+      }
     else
+      puts "#{fake_value.inspect} => FAKE"
       return fake_value # First query, just ignore it.
     end
   end
@@ -50,10 +52,6 @@ class Hider
 
     @table[table][:f2r][fake_value] = real_value
     @table[table][:r2f][real_value] = fake_value
-
-    if table == :screen_name
-      puts "STORED -> DB: #{@table[:screen_name].inspect}"
-    end
 
     return fake_value
   end

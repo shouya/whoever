@@ -8,10 +8,16 @@ class UserFilter
 
   def self.filter_user(json, env)
     hider = env[:hider]
-    json['screen_name'] = \
-        hider.query_fake_value(:screen_name, json['screen_name'])
-    json['name'] = \
-    hider.query_fake_value(:nick_name, json['name'])
+
+    ['screen_name', 'source_screen_name', 'target_screen_name'].each do |x|
+      json[x] = hider.query_fake_value(:screen_name, json[x]) if json.key? x
+    end
+
+
+    if json.key? 'name'
+      json['name'] = \
+          hider.query_fake_value(:nick_name, json['name'])
+    end
 
     if json.key? 'description'
       json['description'] = \
@@ -80,11 +86,14 @@ class UserFilter
 
   def self.decode_parameter(param, env)
     if param.has_key? 'screen_name'
-      puts "DECODING SCREENNAME: #{param['screen_name'][0].inspect}"
       param['screen_name'][0] = \
         env[:hider].query_real_value(:screen_name, param['screen_name'][0])
-      puts "INTO: #{param['screen_name'][0].inspect}"
     end
+  end
+
+  def self.filter_relationship(json, env)
+    filter_user(json['relationship']['target'], env)
+    filter_user(json['relationship']['source'], env)
   end
 end
 

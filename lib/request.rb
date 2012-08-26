@@ -16,6 +16,7 @@ class Whoever::RequestWrapper
     request_uri = $config['api_proxy_base'].sub(%r{\/$}, '')
     request_uri << fullpath
 
+    puts "#{method}: #{request_uri}"
     response = case method
                when :GET
                  RestClient.get request_uri#, headers

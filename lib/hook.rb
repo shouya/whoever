@@ -17,6 +17,13 @@ class Hook
     return u.to_s
   end
 
+  def self.decode_request_body(req)
+    return CGI.parse(req.body)
+  end
+  def self.encode_request_body(body_param)
+    return URI.encode_www_form(body_param)
+  end
+
   def self.decode_response_body(res)
     return JSON.parse(res.body)
   end
