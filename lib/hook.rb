@@ -9,7 +9,7 @@ require_relative 'hider'
 
 class Hook
   def self.decode_request_params(req)
-    return CGI.parse(URI.parse(req.fullpath).query)
+    return CGI.parse(URI.parse(req.fullpath).query || '')
   end
   def self.encode_request_uri(orig_uri, param_hash)
     u = URI.parse(orig_uri)

@@ -17,6 +17,11 @@ class Whoever::Server < Sinatra::Base
     erb :index
   end
 
+  def fake_session
+    $fs ||= {}
+    return $fs
+  end
+
 
   [:get, :post, :delete, :put].each do |method|
     eval <<-HERE
@@ -32,13 +37,13 @@ class Whoever::Server < Sinatra::Base
 
 
           hook = hook_manager.find_hook(:#{method.upcase}, req.fullpath)
-          hook.pre_req(req, session) if hook
+          hook.pre_req(req, fake_session) if hook
 
           res = Whoever::ResponseWrapper.new(*req.do_request)
 
-          hook.post_res(res, session) if hook
+          hook.post_res(res, fake_session) if hook
 
-          res.headers['content-type'] = 'application/json;charset=utf-8'
+          res.headers['content-type'] = 'application/json; charset=utf-8'
           [res.status_code, res.headers, res.body]
         end
     HERE
