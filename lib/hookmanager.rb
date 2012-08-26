@@ -38,5 +38,8 @@ class Whoever::HookManager
     register_hook(:GET, %r{/statuses/user_timeline\.json.*}, ::TimelineHook)
     register_hook(:GET, %r{/statuses/retweeted_to_user\.json.*}, ::TimelineHook)
     register_hook(:GET, %r{/statuses/retweeted_by_user\.json.*}, ::TimelineHook)
+
+    register_hook(:GET, %{/statuses/show/.*\.json}, ::TimelineHook)
+
   end
 end

@@ -21,7 +21,16 @@ class Hook
     return JSON.parse(res.body)
   end
   def self.encode_response_body(json_hash)
-    return JSON.dump(json_hash)
+    utf8_str = JSON.dump(json_hash)
+    ascii_str = ''
+    utf8_str.each_char do |c|
+      if c.ord <= 127
+        ascii_str << c
+      else
+        ascii_str << "\\u#{c.ord.to_s(16)}"
+      end
+    end
+    ascii_str
   end
 
   def self.init_hider(env)
