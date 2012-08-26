@@ -4,7 +4,7 @@ require 'json'
 require_relative '../hider'
 
 class UserFilter
-  USER_REGEXP = /@[a-zA-Z_]+/
+  USER_REGEXP = /@[1-9a-zA-Z_]+/
 
   def self.filter_user(json, env)
     hider = env[:hider]

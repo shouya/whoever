@@ -19,13 +19,10 @@ class Hider
   def query_real_value(table, fake_value)
     @table[table] = {:r2f => {}, :f2r => {}} unless @table.key? table
 
-    puts "<-DB: #{@table[:screen_name]}"
     if @table[table][:f2r].key? fake_value
-      return @table[table][:f2r][fake_value].tap {|x| 
-              puts "#{fake_value.inspect} => #{x.inspect}"
-      }
+      return @table[table][:f2r][fake_value]
     else
-      puts "#{fake_value.inspect} => FAKE"
+      puts "WARNING: real name of #{fake_value} Not found."
       return fake_value # First query, just ignore it.
     end
   end
