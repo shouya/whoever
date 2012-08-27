@@ -1,39 +1,44 @@
 # Whoever
 __NOTICE:__ I am now going to write a new program that provides
-powerful feature to filter twitter api request and response, all of
-possibilities, including tweet text, user infos, and so on. And _this
-project is deprecated._ (how a short life.)
+powerful features to filter twitter api requests and responses, with
+all of possibilities, including tweet texts, user infos, and so on.
+
+__And this project is going to be deprecated.__ (what a short life.)
+
+Please move on [`Twilter`](https://github.com/shouya/twilter) for that
+project.
 
 ## As a Twitter API proxy
-This is a Twitter API proxy that provides extendable filter function.
+This is a Twitter API proxy that provides extendable filter functions.
 
 ## As Whoever
 _Whoever == No matter who._
 
 In cyber social life, don't you feel that you're losting your
-objective judgements due to the identity of people?
+objective judgements due to the identities of people?
 
 We accept more easily if the speaker is someone famous, or we are
 there omitting to reply a interesting subject if it froms a stranger.
 
-Did we?
+Don't we?
 
-It's because of man kind's nature that we can't easily change it. But
-if you have mind about that, try this program.
+It's because of some kind of human's nature that we can't easily
+change it.
+But if you have mind about that, try this program.
 
-_Whoever_ proxy all your twitter request, and filter to hide almost
-all personal information that makes us impossible to recognize who he
+_Whoever_ proxy all your twitter requests, and filter to hide almost
+all personal informations that makes us impossible to recognize who he
 is, or what his impression is to you before.
 
 Now, no matter who anymore, ever.
 
 ## Deploying
-<placeholder>
+*<placeholder>*
 
 ## Using
-<placeholder>
+*<placeholder>*
 
-## Acknowlegement
+## Acknowledgement
 The [Hackerathon](http://24hackers.com) activity and all the
 members. Owing to them I could have a chance to carry the mind out
 into substance.
