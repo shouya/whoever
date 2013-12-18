@@ -32,6 +32,9 @@ is, or what his impression is to you before.
 
 Now, no matter who anymore, ever.
 
+## Screenshot
+![No strangers any more!](https://github.com/shouya/whoever/raw/master/screenshot.png)
+
 ## Deploying
 *<placeholder>*
 
